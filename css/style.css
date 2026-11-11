@@ -1,0 +1,161 @@
+/* 보조 스타일 (Tailwind CDN으로 처리하기 어려운 부분) */
+
+:root {
+  --accent: #5b6cf0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* 고정 헤더에 섹션 제목이 가려지지 않도록 */
+}
+
+/* 히어로 배경: 위쪽에서 비치는 은은한 빛 */
+.hero {
+  background:
+    radial-gradient(ellipse 60% 50% at 75% 30%, rgba(91, 108, 240, 0.22), transparent 70%),
+    #0a0b0f;
+}
+
+/* 스크롤 시 나타나는 애니메이션 */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 기술 스택 배지 */
+.skill-badge {
+  border-radius: 0.5rem;
+  background-color: #181b25;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  box-shadow: inset 0 0 0 1px #262a36;
+  transition: transform 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.skill-badge:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+/* 프로젝트 태그 */
+.tag {
+  border-radius: 0.375rem;
+  background-color: rgba(91, 108, 240, 0.15);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #a5b4fc;
+}
+
+/* 필터 버튼 */
+.filter-btn {
+  border: 1px solid #262a36;
+  border-radius: 9999px;
+  background-color: #12141b;
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: #ffffff;
+}
+.filter-btn.is-active {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+/* 프로젝트 카드: 그림자, 호버 시 떠오르고 빛나는 효과 */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #12141b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.7s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(91, 108, 240, 0.6);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8), 0 0 28px -4px rgba(91, 108, 240, 0.45);
+}
+/* 호버 시 썸네일 확대 */
+.project-card .project-thumb {
+  transition: transform 0.5s ease;
+}
+.project-card:hover .project-thumb {
+  transform: scale(1.05);
+}
+.project-card.hidden {
+  display: none !important;
+}
+
+.project-thumb {
+  display: flex;
+  height: 10rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+
+/* 내비게이션 현재 섹션 표시 */
+.nav-link {
+  transition: color 0.2s ease;
+}
+.nav-link:hover,
+.nav-link.is-active {
+  color: #ffffff;
+}
+.nav-link.is-active {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+}
+
+/* 헤더: 본문과 구분되는 하단 경계선 + 스크롤 시 그림자 */
+.site-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+#navbar.is-scrolled {
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.8);
+}
+
+/* 푸터: 배경 면을 나누고, 상단에 포인트 색 가로선을 둠 */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* 움직임 감소 설정을 쓰는 사용자에게는 애니메이션 끄기 */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .project-card, .project-card .project-thumb, .skill-badge, .filter-btn { transition: none; }
+  .project-card:hover { transform: none; }
+}

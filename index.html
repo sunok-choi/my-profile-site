@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="초이의 프로필 - 백엔드·프론트엔드 개발자" />
+  <title>초이 | 백엔드 · 프론트엔드 개발자</title>
+
+  <!-- Tailwind CSS CDN (class 기반 다크모드, 포인트 컬러 설정) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: { DEFAULT: '#5b6cf0', dark: '#4755d6' },
+            ink: '#0a0b0f',
+            card: '#12141b',
+          },
+          fontFamily: {
+            sans: ['"Pretendard"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-ink text-slate-300 antialiased">
+
+  <!-- 헤더 / 내비게이션 -->
+  <header id="navbar" class="site-header fixed inset-x-0 top-0 z-50 bg-ink/95 backdrop-blur transition-shadow">
+    <nav class="mx-auto flex max-w-6xl items-center px-6 py-5">
+      <a href="#home" class="text-lg font-bold tracking-tight text-white">초이<span class="text-accent">.</span></a>
+
+      <!-- 메뉴는 오른쪽 정렬 -->
+      <div class="ml-auto hidden items-center gap-7 md:flex">
+        <ul class="flex items-center gap-7 text-sm font-medium text-slate-400">
+          <li><a href="#home" class="nav-link">홈</a></li>
+          <li><a href="#about" class="nav-link">소개</a></li>
+          <li><a href="#skills" class="nav-link">기술</a></li>
+          <li><a href="#projects" class="nav-link">프로젝트</a></li>
+          <li><a href="#contact" class="nav-link">연락처</a></li>
+        </ul>
+        <a href="#contact" class="rounded-md bg-accent px-5 py-2 text-sm font-semibold text-white transition hover:bg-accent-dark">연락하기</a>
+      </div>
+
+      <button id="menu-toggle" aria-label="메뉴 열기" aria-expanded="false"
+              class="ml-auto rounded-md p-2 text-slate-300 hover:bg-white/5 md:hidden">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- 모바일 메뉴 -->
+    <ul id="mobile-menu" class="hidden border-t border-white/5 bg-card md:hidden">
+      <li><a href="#home" class="block px-6 py-3 text-slate-300 hover:bg-white/5">홈</a></li>
+      <li><a href="#about" class="block px-6 py-3 text-slate-300 hover:bg-white/5">소개</a></li>
+      <li><a href="#skills" class="block px-6 py-3 text-slate-300 hover:bg-white/5">기술</a></li>
+      <li><a href="#projects" class="block px-6 py-3 text-slate-300 hover:bg-white/5">프로젝트</a></li>
+      <li><a href="#contact" class="block px-6 py-3 text-slate-300 hover:bg-white/5">연락처</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <!-- 히어로 -->
+    <section id="home" class="hero relative overflow-hidden pt-32 pb-20 md:pt-40">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
+        <div>
+          <p class="reveal flex items-center gap-2 text-sm text-slate-400">
+            <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
+            복잡한 로직을 깔끔한 코드로.
+          </p>
+          <h1 class="reveal mt-5 text-4xl font-extrabold leading-tight tracking-tight text-white md:text-6xl">
+            Backend Systems <span class="text-accent">Built</span><br />
+            <span class="text-accent">for Speed</span> and Scale.
+          </h1>
+          <p class="reveal mt-6 max-w-lg text-base leading-relaxed text-slate-400">
+            안녕하세요, 초이입니다. 빠른 API와 사용자에게 편리한 화면을 함께 만드는 백엔드·프론트엔드 개발자입니다.
+          </p>
+          <div class="reveal mt-8 flex flex-wrap gap-4">
+            <a href="#projects" class="rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition hover:bg-accent-dark">
+              프로젝트 보기
+            </a>
+            <a href="#contact" class="rounded-md border border-white/15 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-accent hover:text-accent">
+              연락하기
+            </a>
+          </div>
+          <p class="reveal mt-10 text-xs font-medium tracking-wide text-slate-500">
+            HTML | CSS | JAVASCRIPT | REACT | TAILWIND | NODE.JS | REST API
+          </p>
+        </div>
+
+        <!-- 프로필 이미지 자리 (본인 사진으로 교체: <img src="images/profile.jpg" alt="초이" class="h-full w-full object-cover" />) -->
+        <div class="reveal relative mx-auto flex h-72 w-72 items-center justify-center md:h-96 md:w-96">
+          <div class="absolute inset-0 rounded-full bg-accent/30 blur-3xl"></div>
+          <div class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-full border border-white/10 bg-gradient-to-br from-accent/40 via-card to-ink shadow-2xl">
+            <span class="text-7xl font-extrabold text-white/80">초</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소개 -->
+    <section id="about" class="relative overflow-hidden py-24">
+      <!-- 배경 워터마크 -->
+      <p class="pointer-events-none absolute inset-x-0 top-6 select-none text-center text-[5rem] font-black leading-none tracking-tight text-white/[0.03] md:text-[9rem]" aria-hidden="true">ABOUT ME</p>
+
+      <div class="relative mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-2">
+        <!-- 번호 블록 -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="reveal rounded-2xl border border-white/5 bg-card p-6">
+            <p class="text-sm font-semibold text-accent">01</p>
+            <p class="mt-3 text-lg font-semibold text-white">백엔드</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">API 설계와 데이터 흐름, 안정적인 서버를 만듭니다.</p>
+          </div>
+          <div class="reveal rounded-2xl border border-white/5 bg-card p-6">
+            <p class="text-sm font-semibold text-accent">02</p>
+            <p class="mt-3 text-lg font-semibold text-white">프론트엔드</p>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">읽기 쉽고 반응이 빠른 화면을 구현합니다.</p>
+          </div>
+        </div>
+
+        <!-- TODO: 아래 소개 문구를 본인의 이야기로 바꿔 주세요 -->
+        <div>
+          <p class="reveal text-sm font-semibold uppercase tracking-widest text-accent">— About Me</p>
+          <h2 class="reveal mt-3 text-3xl font-bold text-white md:text-4xl">서버와 화면을 함께 고민합니다</h2>
+          <div class="reveal mt-6 space-y-4 leading-relaxed text-slate-400">
+            <p>서버의 데이터 흐름과 화면의 사용자 경험을 함께 고민하는 개발자입니다.</p>
+            <p>API 설계부터 UI 구현까지 전 과정을 다루며, 읽기 쉬운 코드와 유지보수가 쉬운 구조를 중요하게 생각합니다.</p>
+            <p>새로운 기술을 배우는 것을 즐기고, 배운 내용을 실제 프로젝트에 적용하려고 노력합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 기술 스택 -->
+    <section id="skills" class="py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="reveal text-sm font-semibold uppercase tracking-widest text-accent">— Skills</h2>
+        <p class="reveal mt-2 text-3xl font-bold text-white">기술 스택</p>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <div class="reveal rounded-2xl border border-white/5 bg-card p-6 shadow-xl shadow-black/40">
+            <h3 class="mb-4 font-semibold text-white">Frontend</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-badge">HTML5</span>
+              <span class="skill-badge">CSS3</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">Tailwind CSS</span>
+            </div>
+          </div>
+          <div class="reveal rounded-2xl border border-white/5 bg-card p-6 shadow-xl shadow-black/40">
+            <h3 class="mb-4 font-semibold text-white">Backend</h3>
+            <div class="flex flex-wrap gap-2">
+              <!-- TODO: 실제 백엔드 기술 스택으로 교체해 주세요 -->
+              <span class="skill-badge">Node.js</span>
+              <span class="skill-badge">REST API</span>
+              <span class="skill-badge">Database</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로젝트 -->
+    <section id="projects" class="py-20">
+      <div class="mx-auto max-w-6xl px-6">
+        <h2 class="reveal text-sm font-semibold uppercase tracking-widest text-accent">— Projects</h2>
+        <p class="reveal mt-2 text-3xl font-bold text-white">프로젝트</p>
+
+        <!-- 태그 필터 -->
+        <div class="reveal mt-8 flex flex-wrap gap-2" role="group" aria-label="프로젝트 필터">
+          <button class="filter-btn is-active" data-filter="all">전체</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+        </div>
+
+        <!-- TODO: 프로젝트 카드를 본인 작업물로 교체해 주세요 (data-category: frontend | backend) -->
+        <div id="project-list" class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="project-card reveal" data-category="frontend">
+            <div class="project-thumb bg-gradient-to-br from-accent to-indigo-900">React</div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-semibold text-white">포트폴리오 대시보드</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">React로 만든 관리자 대시보드입니다. 차트와 표 데이터를 반응형으로 보여줍니다.</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="tag">React</span><span class="tag">Tailwind</span>
+              </div>
+              <div class="mt-auto flex gap-5 pt-5 text-sm font-semibold">
+                <a href="#" class="text-accent hover:underline">GitHub</a>
+                <a href="#" class="text-accent hover:underline">Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="backend">
+            <div class="project-thumb bg-gradient-to-br from-slate-700 to-accent">API</div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-semibold text-white">게시판 REST API</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">회원 인증과 게시글 CRUD를 제공하는 REST API 서버입니다.</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">JWT</span>
+              </div>
+              <div class="mt-auto flex gap-5 pt-5 text-sm font-semibold">
+                <a href="#" class="text-accent hover:underline">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-category="frontend">
+            <div class="project-thumb bg-gradient-to-br from-indigo-900 to-slate-800">JS</div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-semibold text-white">할 일 관리 앱</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-400">순수 JavaScript로 만든 할 일 관리 앱입니다. 로컬 저장소에 데이터를 보관합니다.</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span>
+              </div>
+              <div class="mt-auto flex gap-5 pt-5 text-sm font-semibold">
+                <a href="#" class="text-accent hover:underline">GitHub</a>
+                <a href="#" class="text-accent hover:underline">Demo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 연락처 -->
+    <section id="contact" class="py-24">
+      <div class="mx-auto max-w-3xl px-6 text-center">
+        <h2 class="reveal text-sm font-semibold uppercase tracking-widest text-accent">— Contact</h2>
+        <p class="reveal mt-2 text-3xl font-bold text-white">함께 이야기해요</p>
+        <p class="reveal mt-4 text-slate-400">프로젝트 제안이나 궁금한 점이 있다면 편하게 연락 주세요.</p>
+        <div class="reveal mt-12">
+          <a href="mailto:choi@gmail.com"
+             class="inline-flex items-center gap-2 rounded-md bg-accent px-10 py-4 text-lg font-semibold text-white shadow-lg shadow-accent/25 transition hover:bg-accent-dark">
+            choi@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer relative bg-card">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-6 py-5 text-xs text-slate-500 sm:flex-row">
+      <a href="#home" class="font-bold tracking-tight text-slate-300">초이<span class="text-accent">.</span></a>
+      <p>&copy; <span id="year"></span> 초이. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
